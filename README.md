@@ -1,0 +1,1 @@
+Repository contains exercises with solutions assigned to me from Daily Coding Problem.
