@@ -3,6 +3,8 @@ Repository contains exercises with solutions assigned to me from Daily Coding Pr
 Progress:
 1. ✔
 2. ✔
+3. ✔
+4. ✔
 
 
-Solved problems: 2/2
+Solved problems: 4/4
