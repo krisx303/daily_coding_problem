@@ -7,6 +7,7 @@ Progress:
 4. ✔
 5. ✔
 6. ✔
+7. ✔
 
 
-Solved problems: 4/4
+Solved problems: 7/7

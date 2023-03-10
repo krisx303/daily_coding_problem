@@ -1,31 +1,43 @@
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
-def find_missing_integer(array: list[int]) -> int:
-    n = len(array)
-    if n == 0:
-        return 1
-    for i in range(n):
-        if array[i] < 1 or array[i] > n + 1:
-            array[i] = 0
-
-    index = 0
-    x = array[index]
-    while index < n:
-        if x < 1 or x > n or x is True:
-            if index == n - 1:
-                break
-            index += 1
-            x = array[index]
-        else:
-            buff = x - 1
-            x = array[x - 1]
-            array[buff] = True
-
-    for i in range(n):
-        if array[i] is not True:
-            return i + 1
-    return n+1
+    def __str__(self):
+        return serialize(self)
 
 
-arr = [3, 4, -1, 6, 8,  6, 9, 10, -3, -4, 12, 15, -2, -1, 16, 17, 20, 1, 2]
-print(find_missing_integer(arr))
+node = Node('root', Node('left', Node('left.left')), Node('right'))
 
+
+def serialize(node: Node) -> str:
+    if node is None:
+        return "None"
+    if node.left is None and node.right is None:
+        return str(node.val)
+    return f"{node.val} -> [{serialize(node.left)}, {serialize(node.right)}]"
+
+
+def deserialize(s: str) -> Node:
+    if not s.__contains__(" -> "):
+        if s == "None":
+            return None
+        return Node(s)
+    index = s.index(" -> ")
+    i = index + 5
+    count = 0
+    while True:
+        if s[i] == ',' and count == 0:
+            break
+        elif s[i] == '[':
+            count += 1
+        elif s[i] == ']':
+            count -= 1
+        i += 1
+    left = deserialize(s[index+5:i])
+    right = deserialize(s[i+2:-1])
+    return Node(s[:index], left, right)
+
+
+assert deserialize(serialize(node)).left.left.val == 'left.left'
