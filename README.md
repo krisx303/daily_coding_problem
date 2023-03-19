@@ -10,6 +10,7 @@ Progress:
 7. ✔
 8. ✔
 9. ✔
+10. ✔
 
 
-Solved problems: 9/9
+Solved problems: 10/10
